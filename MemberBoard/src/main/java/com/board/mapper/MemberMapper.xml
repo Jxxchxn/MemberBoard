@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.board.mapper.MemberMapper">
+	
+	<select id="idCheck" resultType="com.board.domain.MemberVO">
+    	select * from tbl_member2 where mID = #{mID}
+	</select>
+  
+	<insert id="memberJoin" parameterType="com.board.domain.MemberVO">
+		insert into tbl_member2(mID, mPW, mName, mAge, mAddr, mEmail, mGender, mProfile)
+		values(#{memID}, #{mPW}, #{mName}, #{mAge}, #{mAddr}, #{mEmail}, #{mGender}, #{mProfile})
+	</insert>
+  
+	<select id="memberLogin" parameterType="com.board.domain.MemberVO" resultType="com.board.domain.MemberVO">
+		select * from tbl_member2 
+		where mID = #{mID} and mPW = #{mPW}
+	</select>
+  
+	<update id="infoUpdate" parameterType="com.board.domain.MemberVO">
+		update tbl_member2
+		set mPW = #{mPW}, mName = #{mName}, mAge = #{mAge}, mAddr = #{mAddr}, mEmail = #{mEmail}, mGender = #{mGender}
+		where mID = #{mID}      
+  </update>
+  
+  <select id="memberInfo" resultType="com.board.domain.MemberVO">
+     select * from tbl_member2 where mID = #{mID}
+  </select>  
+  
+  <update id="profileUpdate" parameterType="com.board.domain.MemberVO">
+     update tbl_member2 set mProfile = #{mProfile} where mID = #{mID}
+  </update>
+</mapper>
