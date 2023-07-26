@@ -56,7 +56,7 @@ public class MemberController {
 		if(result == 1) {
 			rttr.addFlashAttribute("msgType", "성공 메시지");
 			rttr.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
-			session.setAttribute("mvo", m);
+			session.setAttribute("mvo", m);	// ${!empty mvo}
 			return "redirect:/";
 		} else {
 			
@@ -84,7 +84,7 @@ public class MemberController {
 		if(mvo != null) {	// 로그인 성공
 			rttr.addFlashAttribute("msgType", "성공 메시지");
 			rttr.addFlashAttribute("msg", "로그인되었습니다.");
-			session.setAttribute("mvo", mvo);
+			session.setAttribute("mvo", mvo);	// ${!empty mvo}
 			return "redirect:/";
 		} else {
 			rttr.addFlashAttribute("msgType", "성공 메시지");
