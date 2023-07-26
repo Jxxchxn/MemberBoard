@@ -16,7 +16,7 @@
     $(document).ready(function(){
     	if(${!empty msgType}){
      		$("#messageType").attr("class", "modal-content panel-warning");    
-    		$("#myMessage").modal("show");
+    		$("#myModal02").modal("show");
     	}
     });
     
@@ -40,14 +40,26 @@
             error : function(){ alert("error"); }    	   
         });    	
     }
+    
+    function pwCheck(){
+    	var mPW01 = $("#mPW01").val();
+    	var mPW02 = $("#mPW02").val();
+    	if(mPW01 != mPW02){
+    		$("#pwPass").html("비밀번호가 일치하지 않습니다.");
+    	}else {
+    		$("#pwPass").html("");
+    		$("#mPW").val(mPW01);    		
+    	}
+    }
     </script>
 </head>
 <body>
-
+<jsp:include page="../include/header.jsp"/>
 <div class="container">
     <h2>Form control: input</h2>
     <p>The form below contains two input elements; one of type text and one of type password:</p>
     <form name="frm" action="${contextPath}/memberJoin" method="post">
+    <input type="hidden" id="mPW" name="mPW" value=""/>
         <div class="form-group">
             <label for="mID">아이디</label>
             <input id="mID" name="mID" type="text" class="form-control" maxlength="20" placeholder="아이디">
@@ -55,13 +67,13 @@
         </div>
         <div class="form-group">
             <label for="mPW01">비밀번호</label>
-            <input id="mPW01" name="mPW01" type="password" class="form-control" maxlength="20" placeholder="비밀번호">
+            <input id="mPW01" name="mPW01" type="password" class="form-control" maxlength="20" onkeyup="pwCheck()" placeholder="비밀번호">
         </div>
         <div class="form-group">
             <label for="mPW02">비밀번호 확인</label>
-            <input id="mPW02" name="mPW02" type="password" class="form-control" maxlength="20" placeholder="비밀번호 확인">
+            <input id="mPW02" name="mPW02" type="password" class="form-control" maxlength="20" onkeyup="pwCheck()" placeholder="비밀번호 확인">
+            <span id="pwPass" style="color: red"></span>
         </div>
-        <span id="pwCheck" style="color: red"></span>
         <div class="form-group">
             <label for="mName">이름</label>
             <input id="mName" name="mName" type="text" class="form-control" maxlength="20" placeholder="이름">
@@ -90,13 +102,11 @@
             <label for="mEmail">이메일</label>
             <input id="mEmail" name="mEmail" type="text" class="form-control" maxlength="50" placeholder="이메일">
         </div>
-         <input type="button" class="btn btn-primary btn-sm pull-right" value="등록" onclick="goInsert()"/>
-
+        	<input type="button" class="btn btn-primary btn-sm pull-right" value="등록" onclick="goInsert()"/>
     </form>
 </div>
 
-
-<!-- Modal -->
+<!-- 아이디 중복체크 모달 -->
 <div id="myModal" class="modal fade" role="dialog" >
     <div class="modal-dialog">	
         <!-- Modal content-->
@@ -114,8 +124,9 @@
         </div>	
     </div>
 </div> 
-<!-- 실패 메세지를 출력(modal) -->
-<div id="myMessage" class="modal fade" role="dialog" >
+
+<!-- 실패 모달 -->
+<div id="myModal02" class="modal fade" role="dialog" >
     <div class="modal-dialog">	
         <!-- Modal content-->
         <div id="messageType" class="modal-content panel-info">

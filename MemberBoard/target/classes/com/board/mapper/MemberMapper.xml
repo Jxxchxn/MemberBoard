@@ -8,7 +8,7 @@
   
 	<insert id="memberJoin" parameterType="com.board.domain.MemberVO">
 		insert into tbl_member2(mID, mPW, mName, mAge, mAddr, mEmail, mGender, mProfile)
-		values(#{memID}, #{mPW}, #{mName}, #{mAge}, #{mAddr}, #{mEmail}, #{mGender}, #{mProfile})
+		values(#{mID}, #{mPW}, #{mName}, #{mAge}, #{mAddr}, #{mEmail}, #{mGender}, #{mProfile})
 	</insert>
   
 	<select id="memberLogin" parameterType="com.board.domain.MemberVO" resultType="com.board.domain.MemberVO">

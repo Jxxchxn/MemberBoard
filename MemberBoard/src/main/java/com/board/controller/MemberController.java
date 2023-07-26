@@ -69,7 +69,7 @@ public class MemberController {
 	// 로그인 페이지로 이동
 	@RequestMapping("/memberLoginForm")
 	public String memberLogin() {
-		return "member/memLoginForm"; // memLoginForm.jsp
+		return "member/memberLogin";
 	}
 	
 	// 로그인

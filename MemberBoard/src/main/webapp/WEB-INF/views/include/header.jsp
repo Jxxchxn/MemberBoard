@@ -30,7 +30,7 @@
 	    <div class="col-sm-5">    
 			<c:if test="${empty mvo}">
 			    <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+			        <li><a href="memberLoginForm"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 			        <li><a href="memberJoinForm"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>            
 			    </ul>
 			</c:if>
@@ -38,15 +38,7 @@
 			    <ul class="nav navbar-nav navbar-right">
 			    <li><a href="#"><span class="glyphicon glyphicon glyphicon-wrench"></span> 회원정보수정</a></li>
 			    <li><a href="#"><span class="glyphicon glyphicon glyphicon-picture"></span> 사진등록</a></li>
-			    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>            
-			    <c:if test="${!empty mvo}">
-			        <c:if test="${mvo.memProfile eq ''}">
-			            <li><img class="img-circle" src="${contextPath}/resources/images/person.PNG" style="width: 50px; height: 50px"/> ${mvo.memName} 님Welcome.</li>
-			        </c:if>
-			        <c:if test="${mvo.memProfile ne ''}">
-			            <li><img class="img-circle" src="${contextPath}/resources/upload/${mvo.memProfile}" style="width: 50px; height: 50px"/> ${mvo.memName} 님Welcome.</li>
-			        </c:if>			  
-			    </c:if>
+			    <li><a href="memberLogout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 			    </ul>
 			</c:if>
 	    </div>
